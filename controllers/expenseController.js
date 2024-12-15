@@ -1,29 +1,47 @@
 import db from '../models/db.js'
 
+// Add Expense Controller
 export const addExpense = async (req, res) => {
-  const {amount, category, date, userId} = req.body
+  const {user_id, category, amount} = req.body
+
+  if (!user_id || !category || !amount) {
+    return res.status(400).json({message: 'User ID, category, and amount are required'})
+  }
 
   try {
     const [result] = await db.execute(
-      'INSERT INTO expenses (user_id, amount, category, date) VALUES (?, ?, ?, ?)',
-      [userId, amount, category, date]
+      'INSERT INTO expenses (user_id, category, amount) VALUES (?, ?, ?)',
+      [user_id, category, amount]
     )
-    res.status(201).json({message: 'Expense added'})
-  } catch (err) {
-    res.status(500).json({message: 'Error adding expense', error: err})
+
+    res.status(201).json({message: 'Expense added successfully', expenseId: result.insertId})
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({message: 'Error adding expense', error})
   }
 }
 
 export const getMonthlyReport = async (req, res) => {
-  const {userId, month, year} = req.query
+  const {user_id} = req.params
+
+  if (!user_id) {
+    return res.status(400).json({message: 'User ID is required'})
+  }
 
   try {
-    const [result] = await db.execute(
-      'SELECT category, SUM(amount) AS total FROM expenses WHERE user_id = ? AND MONTH(date) = ? AND YEAR(date) = ? GROUP BY category',
-      [userId, month, year]
+    // Fetch expenses for the current month
+    const [expenses] = await db.execute(
+      'SELECT * FROM expenses WHERE user_id = ? AND YEAR(date) = YEAR(CURRENT_DATE) AND MONTH(date) = MONTH(CURRENT_DATE)',
+      [user_id]
     )
-    res.json(result)
-  } catch (err) {
-    res.status(500).json({message: 'Error fetching report', error: err})
+
+    if (expenses.length === 0) {
+      return res.status(404).json({message: 'No expenses found for this month'})
+    }
+
+    res.status(200).json({message: 'Monthly report retrieved successfully', expenses})
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({message: 'Error fetching monthly report', error})
   }
 }
