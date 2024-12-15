@@ -34,18 +34,19 @@ export const login = async (req, res) => {
     )
 
     if (user.length === 0) {
-      return res.status(400).json({message: 'Invalid username or password'})
+      return res.status(400).json({success: false, message: 'Invalid username or password'})
     }
 
     const isPasswordValid = bcrypt.compareSync(password, user[0].password)
 
     if (!isPasswordValid) {
-      return res.status(400).json({message: 'Invalid username or password'})
+      return res.status(400).json({success: false, message: 'Invalid username or password'})
     }
 
-    res.status(200).json({message: 'Login successful'})
+    res.status(200).json({success: true, message: 'Login successful'})
   } catch (err) {
-    res.status(500).json({message: 'Error logging in', error: err})
+    res.status(500).json({success: false, message: 'Error logging in', error: err})
   }
 }
+
 

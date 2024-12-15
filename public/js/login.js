@@ -1,26 +1,26 @@
-document.getElementById('login-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+document.getElementById('login-form').addEventListener('submit', function (e) {
+  e.preventDefault()
 
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+  const username = document.getElementById('username').value
+  const password = document.getElementById('password').value
 
-  fetch('http://localhost:3000/login', {
+  fetch('http://localhost:5000/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ username, password })
+    body: JSON.stringify({username, password})
   })
     .then(response => response.json())
     .then(data => {
-      if (data.success) {
-        window.location.href = 'dashboard.html'; // Redirect to dashboard on success
+      if (data.message === 'Login successful') {
+        window.location.href = 'http://localhost:5000/dashboard.html'
       } else {
-        alert(data.message); // Show error message
+        alert(data.message)
       }
     })
     .catch(error => {
-      console.error('Error:', error);
-      alert('Login failed. Please try again.');
-    });
-});
+      console.error('Error:', error)
+      alert('Login failed. Please try again.')
+    })
+})

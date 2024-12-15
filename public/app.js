@@ -1,3 +1,4 @@
+/*
 // Handle Sign Up form submission
 document.getElementById('signup-form')?.addEventListener('submit', async function (e) {
   e.preventDefault()
@@ -81,4 +82,4 @@ window.onload = async function () {
       reportElement.innerHTML = '<p>No expenses found for this month.</p>'
     }
   }
-}
+}*/
