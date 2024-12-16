@@ -14,13 +14,34 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
     .then(response => response.json())
     .then(data => {
       if (data.message === 'Login successful') {
-        window.location.href = 'http://localhost:5000/dashboard.html'
+        // SweetAlert2 popup for success
+        Swal.fire({
+          title: 'Success!',
+          text: 'Login successful!',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        }).then(() => {
+          // Redirect to the dashboard page after user clicks OK
+          window.location.href = 'http://localhost:5000/dashboard.html'
+        })
       } else {
-        alert(data.message)
+        // SweetAlert2 popup for error
+        Swal.fire({
+          title: 'Error!',
+          text: data.message || 'Login failed. Please check your username or password.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        })
       }
     })
     .catch(error => {
       console.error('Error:', error)
-      alert('Login failed. Please try again.')
+      // SweetAlert2 popup for error
+      Swal.fire({
+        title: 'Error!',
+        text: 'An unexpected error occurred. Please try again later.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      })
     })
 })
