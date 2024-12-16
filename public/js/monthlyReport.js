@@ -29,11 +29,20 @@ document.addEventListener('DOMContentLoaded', function () {
         let htmlContent = '<table border="1"><tr><th>Category</th><th>Amount</th><th>Date</th></tr>'
 
         expenses.forEach(expense => {
+          const formattedDate = new Date(expense.date).toLocaleString('en-US', {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+          })
           htmlContent += `
             <tr>
               <td>${expense.category}</td>
               <td>${expense.amount}</td>
-              <td>${expense.date}</td>
+              <td>${formattedDate}</td>
             </tr>
           `
         })

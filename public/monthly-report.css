@@ -16,7 +16,6 @@ body {
     text-align: center; /* Centering the content inside the page */
 }
 
-/* Styles Specific to the Report Section in the Monthly Report Page */
 #monthly-report-page #report {
     width: 80%;
     margin: 0 auto 20px; /* Center the report and add margin below */
@@ -60,7 +59,7 @@ body {
 #monthly-report-page #report table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: -20px;
     border-radius: 8px;
     overflow: hidden;
 }
