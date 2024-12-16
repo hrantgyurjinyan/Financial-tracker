@@ -15,7 +15,7 @@ document.getElementById('signup-form').addEventListener('submit', function (e) {
     .then((response) => response.json())
     .then((data) => {
       if (data.message === 'User created') {
-        // SweetAlert2 popup for success
+        localStorage.setItem('user_id', data.user_id);
         Swal.fire({
           title: 'Success!',
           text: 'User created successfully!',

@@ -34,7 +34,7 @@ export const signup = async (req, res) => {
       [username, hashedPassword, email]
     )
 
-    res.status(201).json({message: 'User created'})
+    res.status(201).json({message: 'User created', user_id: result.insertId})
   } catch (err) {
     res.status(500).json({message: 'Error signing up', error: err})
   }
@@ -59,7 +59,7 @@ export const login = async (req, res) => {
       return res.status(400).json({success: false, message: 'Invalid username or password'})
     }
 
-    res.status(200).json({success: true, message: 'Login successful'})
+    res.status(200).json({success: true, message: 'Login successful', user_id: user[0].id})
   } catch (err) {
     res.status(500).json({success: false, message: 'Error logging in', error: err})
   }

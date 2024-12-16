@@ -14,7 +14,9 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
     .then(response => response.json())
     .then(data => {
       if (data.message === 'Login successful') {
-        // SweetAlert2 popup for success
+
+        localStorage.setItem('user_id', data.user_id)
+        console.log('ID SET IN LOGIN ', localStorage.getItem('user_id'))
         Swal.fire({
           title: 'Success!',
           text: 'Login successful!',

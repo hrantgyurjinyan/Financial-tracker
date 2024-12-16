@@ -1,11 +1,16 @@
 import db from '../models/db.js'
 
-// Add Expense Controller
 export const addExpense = async (req, res) => {
   const {user_id, category, amount} = req.body
 
-  if (!user_id || !category || !amount) {
-    return res.status(400).json({message: 'User ID, category, and amount are required'})
+  if (!user_id) {
+    return res.status(400).json({message: 'User ID required'})
+  }
+  if (!category) {
+    return res.status(400).json({message: 'Category are required'})
+  }
+  if (!amount) {
+    return res.status(400).json({message: 'Amount are required'})
   }
 
   try {
@@ -29,7 +34,6 @@ export const getMonthlyReport = async (req, res) => {
   }
 
   try {
-    // Fetch expenses for the current month
     const [expenses] = await db.execute(
       'SELECT * FROM expenses WHERE user_id = ? AND YEAR(date) = YEAR(CURRENT_DATE) AND MONTH(date) = MONTH(CURRENT_DATE)',
       [user_id]
