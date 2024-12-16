@@ -10,18 +10,38 @@ document.getElementById('signup-form').addEventListener('submit', function (e) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({username, email, password})
+    body: JSON.stringify({username, email, password}),
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       if (data.message === 'User created') {
-        window.location.href = '../login.html' // Full path to login page
+        // SweetAlert2 popup for success
+        Swal.fire({
+          title: 'Success!',
+          text: 'User created successfully!',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        }).then(() => {
+          // Redirect to the login page after user clicks OK
+          window.location.href = '/login.html'
+        })
       } else {
-        alert(data.message) // Show error message
+        // SweetAlert2 popup for error
+        Swal.fire({
+          title: 'Error!',
+          text: data.message || 'Sign up failed.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        })
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Error:', error)
-      alert('Sign up failed. Please try again.')
+      Swal.fire({
+        title: 'Error!',
+        text: 'An unexpected error occurred. Please try again later.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      })
     })
 })

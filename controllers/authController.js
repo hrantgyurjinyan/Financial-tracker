@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs'
 import db from '../models/db.js'
 
-
 export const signup = async (req, res) => {
   const {username, password, email} = req.body
 
@@ -9,14 +8,31 @@ export const signup = async (req, res) => {
     return res.status(400).json({message: 'Email is required'})
   }
 
-  const hashedPassword = bcrypt.hashSync(password, 10)
-
   try {
+    const [existingUsername] = await db.execute(
+      'SELECT * FROM users WHERE username = ?',
+      [username]
+    )
+
+    if (existingUsername.length > 0) {
+      return res.status(400).json({message: 'Username already exists'})
+    }
+
+    const [existingEmail] = await db.execute(
+      'SELECT * FROM users WHERE email = ?',
+      [email]
+    )
+
+    if (existingEmail.length > 0) {
+      return res.status(400).json({message: 'Email already exists'})
+    }
+
+    const hashedPassword = bcrypt.hashSync(password, 10)
+
     const [result] = await db.execute(
       'INSERT INTO users (username, password, email) VALUES (?, ?, ?)',
       [username, hashedPassword, email]
     )
-    console.log(result)
 
     res.status(201).json({message: 'User created'})
   } catch (err) {
