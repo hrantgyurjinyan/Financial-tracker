@@ -1,9 +1,8 @@
 document.getElementById('login-form').addEventListener('submit', function (e) {
   e.preventDefault()
-
+localStorage.removeItem('username')
   console.error('REMOVE ID: ', localStorage.getItem('user_id'))
 
-  localStorage.removeItem('user_id')
   console.error('AFTER REMOVE ID: ', localStorage.getItem('user_id'))
 
   const username = document.getElementById('username').value
