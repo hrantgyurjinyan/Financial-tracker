@@ -22,11 +22,9 @@ document.getElementById('signup-form').addEventListener('submit', function (e) {
           icon: 'success',
           confirmButtonText: 'OK',
         }).then(() => {
-          // Redirect to the login page after user clicks OK
           window.location.href = 'http://localhost:5000/login.html'
         })
       } else {
-        // SweetAlert2 popup for error
         Swal.fire({
           title: 'Error!',
           text: data.message || 'Sign up failed.',

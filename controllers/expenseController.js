@@ -7,10 +7,10 @@ export const addExpense = async (req, res) => {
     return res.status(400).json({message: 'User ID required'})
   }
   if (!category) {
-    return res.status(400).json({message: 'Category are required'})
+    return res.status(400).json({message: 'Category required'})
   }
   if (!amount) {
-    return res.status(400).json({message: 'Amount are required'})
+    return res.status(400).json({message: 'Amount required'})
   }
 
   try {

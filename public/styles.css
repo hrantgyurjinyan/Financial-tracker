@@ -1,4 +1,3 @@
-/* Resetting margins and paddings globally */
 * {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -42,17 +41,17 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* Ensure all input fields are the same size */
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"] {
     width: 100%;
-    padding: 12px; /* Increase padding for a more spacious feel */
-    margin-bottom: 15px; /* Space between fields */
+    padding: 12px;
+    margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px; /* Ensure text is legible */
+    font-size: 16px;
 }
 
 button {
@@ -66,7 +65,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-bottom: 15px; /* Added margin to space out the buttons */
+    margin-bottom: 15px;
 }
 
 button:hover {

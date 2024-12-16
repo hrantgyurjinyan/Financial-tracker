@@ -21,7 +21,7 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
           text: 'Login successful!',
           icon: 'success',
           showConfirmButton: false,
-          timer: 1000, // Auto-close the popup after 2 seconds
+          timer: 1000,
           willClose: () => {
             window.location.href = 'http://localhost:5000/dashboard.html'
           }
@@ -37,7 +37,6 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
     })
     .catch(error => {
       console.error('Error:', error)
-      // SweetAlert2 popup for error
       Swal.fire({
         title: 'Error!',
         text: 'An unexpected error occurred. Please try again later.',
