@@ -14,7 +14,6 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
     .then(response => response.json())
     .then(data => {
       if (data.message === 'Login successful') {
-
         localStorage.setItem('user_id', data.user_id)
         console.log('ID SET IN LOGIN ', localStorage.getItem('user_id'))
         Swal.fire({
