@@ -22,6 +22,7 @@ document.getElementById('signup-form').addEventListener('submit', function (e) {
           icon: 'success',
           confirmButtonText: 'OK',
         }).then(() => {
+          // Redirect to the login page after user clicks OK
           window.location.href = 'http://localhost:5000/login.html'
         })
       } else {

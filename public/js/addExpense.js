@@ -4,7 +4,7 @@ document.getElementById('expense-form').addEventListener('submit', function (e) 
   const category = document.getElementById('category').value
   const amount = document.getElementById('amount').value
   const userId = localStorage.getItem('user_id')
-  console.log('add USER ID: ', userId)
+
   if (!category || !amount || !userId) {
     Swal.fire({
       title: 'Error!',
@@ -13,6 +13,8 @@ document.getElementById('expense-form').addEventListener('submit', function (e) 
       confirmButtonText: 'OK'
     })
     return
+  } else {
+    document.getElementById('user_id').value = userId
   }
 
   fetch('http://localhost:5000/expense/add', {
