@@ -34,16 +34,21 @@ export const getMonthlyReport = async (req, res) => {
   }
 
   try {
+    // Query to get all expenses for the current month
     const [expenses] = await db.execute(
       'SELECT * FROM expenses WHERE user_id = ? AND YEAR(date) = YEAR(CURRENT_DATE) AND MONTH(date) = MONTH(CURRENT_DATE)',
       [user_id]
     )
 
+    // Calculate the total expenses for the month
+    const totalExpenses = expenses.reduce((sum, expense) => sum + parseFloat(expense.amount), 0)
+
     if (expenses.length === 0) {
       return res.status(404).json({message: 'No expenses found for this month'})
     }
 
-    res.status(200).json({message: 'Monthly report retrieved successfully', expenses})
+    // Send the expenses along with total expenses
+    res.status(200).json({message: 'Monthly report retrieved successfully', expenses, totalExpenses})
   } catch (error) {
     console.error(error)
     res.status(500).json({message: 'Error fetching monthly report', error})

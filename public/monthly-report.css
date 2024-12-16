@@ -1,4 +1,13 @@
 /* Styles Specific to the Monthly Report Page */
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Ensure body text also uses Roboto font */
+body {
+    font-family: 'Roboto', sans-serif;
+}
 #monthly-report-page {
     width: 100%;
     max-width: 1200px;

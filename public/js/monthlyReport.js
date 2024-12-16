@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const userId = localStorage.getItem('user_id')
   const reportDiv = document.getElementById('report')
+  const totalExpensesDiv = document.getElementById('total-expenses') // Target the total expenses section
 
   if (!userId) {
     Swal.fire({
@@ -19,6 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(data => {
       if (data.message === 'Monthly report retrieved successfully') {
         const expenses = data.expenses
+        const totalExpenses = data.totalExpenses // Extract the total expenses from the response
+
+        // Update the total expenses section
+        totalExpensesDiv.textContent = `TOTAL EXPENSES: $${totalExpenses.toFixed(2)}`
+
+        // Generate the HTML for the expenses table
         let htmlContent = '<table border="1"><tr><th>Category</th><th>Amount</th><th>Date</th></tr>'
 
         expenses.forEach(expense => {
