@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(data => {
       if (data.message === 'Monthly report retrieved successfully') {
         const expenses = data.expenses
-        const totalExpenses = data.totalExpenses // Extract the total expenses from the response
+        const totalExpenses = data.totalExpenses
 
-        // Update the total expenses section
+        expenses.sort((a, b) => b.amount - a.amount)
+
         totalExpensesDiv.textContent = `TOTAL EXPENSES: $${totalExpenses.toFixed(2)}`
 
-        // Generate the HTML for the expenses table
         let htmlContent = '<table border="1"><tr><th>Category</th><th>Amount</th><th>Date</th></tr>'
 
         expenses.forEach(expense => {

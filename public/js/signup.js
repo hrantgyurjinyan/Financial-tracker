@@ -15,7 +15,7 @@ document.getElementById('signup-form').addEventListener('submit', function (e) {
     .then((response) => response.json())
     .then((data) => {
       if (data.message === 'User created') {
-        localStorage.setItem('user_id', data.user_id);
+        localStorage.setItem('user_id', data.user_id)
         Swal.fire({
           title: 'Success!',
           text: 'User created successfully!',
@@ -23,7 +23,7 @@ document.getElementById('signup-form').addEventListener('submit', function (e) {
           confirmButtonText: 'OK',
         }).then(() => {
           // Redirect to the login page after user clicks OK
-          window.location.href = '/login.html'
+          window.location.href = 'http://localhost:5000/login.html'
         })
       } else {
         // SweetAlert2 popup for error

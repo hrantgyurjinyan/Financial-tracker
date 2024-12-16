@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const logoutButton = document.getElementById('logout')
   logoutButton.addEventListener('click', () => {
+    localStorage.removeItem('user_id')
     window.location.href = '/../login.html' // Redirect to login page
   })
 })
+
