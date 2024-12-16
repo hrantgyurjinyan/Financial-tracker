@@ -1,0 +1,106 @@
+/* Styles Specific to the Monthly Report Page */
+#monthly-report-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the page */
+    padding: 20px;
+    text-align: center; /* Centering the content inside the page */
+}
+
+/* Styles Specific to the Report Section in the Monthly Report Page */
+#monthly-report-page #report {
+    width: 80%;
+    margin: 0 auto 20px; /* Center the report and add margin below */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Title Styling for Monthly Report */
+#monthly-report-page #report h1 {
+    color: #333;
+    margin-bottom: 20px; /* Adds spacing between the title and the table */
+    font-size: 24px; /* Increase font size for better visibility */
+    text-align: center; /* Ensure title is centered */
+}
+
+/* Button Styling for Monthly Report */
+#monthly-report-page .btn-container {
+    text-align: center; /* Ensure the button is centered */
+    margin-top: 20px; /* Add margin above the button */
+}
+
+#monthly-report-page .btn-dashboard {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none; /* Remove border from the button */
+}
+
+#monthly-report-page .btn-dashboard:hover {
+    background-color: #45a049;
+}
+
+/* Table Styling for Monthly Report */
+#monthly-report-page #report table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Table Header and Cell Styling */
+#monthly-report-page #report table th,
+#monthly-report-page #report table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Table Header Color */
+#monthly-report-page #report table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+/* Alternate Row Background Color */
+#monthly-report-page #report table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Row Hover Effect */
+#monthly-report-page #report table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Date Styling for Table */
+#monthly-report-page #report table td:nth-child(3) {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Responsive Design for Monthly Report */
+@media (max-width: 768px) {
+    #monthly-report-page #report {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #monthly-report-page #report table th,
+    #monthly-report-page #report table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #monthly-report-page h1 {
+        font-size: 1.8rem;
+    }
+}

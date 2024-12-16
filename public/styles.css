@@ -1,3 +1,4 @@
+/* Resetting margins and paddings globally */
 * {
     margin: 0;
     padding: 0;
@@ -43,11 +44,11 @@ input[type="email"],
 input[type="password"],
 input[type="number"] {
     width: 100%;
-    padding: 12px;  /* Increase padding for a more spacious feel */
-    margin-bottom: 15px;  /* Space between fields */
+    padding: 12px; /* Increase padding for a more spacious feel */
+    margin-bottom: 15px; /* Space between fields */
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;  /* Ensure text is legible */
+    font-size: 16px; /* Ensure text is legible */
 }
 
 button {

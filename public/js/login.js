@@ -27,7 +27,6 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
           window.location.href = 'http://localhost:5000/dashboard.html'
         })
       } else {
-        // SweetAlert2 popup for error
         Swal.fire({
           title: 'Error!',
           text: data.message || 'Login failed. Please check your username or password.',
