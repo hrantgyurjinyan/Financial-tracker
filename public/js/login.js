@@ -21,10 +21,12 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
           title: 'Success!',
           text: 'Login successful!',
           icon: 'success',
-          confirmButtonText: 'OK',
-        }).then(() => {
-          // Redirect to the dashboard page after user clicks OK
-          window.location.href = 'http://localhost:5000/dashboard.html'
+          showConfirmButton: false, // Hide the OK button
+          timer: 1000, // Auto-close the popup after 2 seconds
+          willClose: () => {
+            // Redirect to the dashboard page after the popup closes
+            window.location.href = 'http://localhost:5000/dashboard.html'
+          }
         })
       } else {
         Swal.fire({
