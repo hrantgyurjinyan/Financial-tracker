@@ -15,6 +15,7 @@ app.use(express.static('public'))
 app.use('/auth', authRoutes)
 app.use('/expense', expenseRoutes)
 
+//MESSAGE FOR METAKSYA
 
 const PORT = 5000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
